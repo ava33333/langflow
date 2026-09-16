@@ -1,0 +1,46 @@
+classDiagram
+    class Flow {
+        name
+        description
+        createdDate
+        lastModified
+    }
+    class Component {
+        displayName
+        category
+        configuration
+    }
+    class Connection {
+        sourcePort
+        targetPort
+    }
+    class Project {
+        name
+    }
+    class Run {
+        startedAt
+        status
+        inputValue
+    }
+    class Message {
+        text
+        sender
+        timestamp
+    }
+    class ModelProvider {
+        name
+        credentialName
+    }
+    class Author {
+        username
+    }
+
+    Author "1" -- "0..*" Project : owns
+    Project "1" -- "0..*" Flow : organizes
+    Flow "1" -- "1..*" Component : contains
+    Flow "1" -- "0..*" Connection : wires
+    Connection "1" -- "1" Component : from >
+    Connection "1" -- "1" Component : to >
+    Flow "1" -- "0..*" Run : isExecutedAs
+    Run "1" -- "0..*" Message : produces
+    Component "0..*" -- "0..1" ModelProvider : callsOut
