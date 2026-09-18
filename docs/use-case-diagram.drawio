@@ -1,0 +1,63 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Use Case Diagram" id="langflow-uc">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="960" pageHeight="620" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- System boundary -->
+        <mxCell id="boundary" value="Langflow" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="40" width="480" height="500" as="geometry" />
+        </mxCell>
+
+        <!-- Actors -->
+        <mxCell id="actorFlowBuilder" value="Flow Builder" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="230" width="30" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actorLLM" value="External LLM Provider API&#10;(supporting actor)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="850" y="100" width="30" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actorAdmin" value="Administrator / Auditor&#10;(offstage actor)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="850" y="420" width="30" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Use cases -->
+        <mxCell id="ucBuild" value="Build a Flow" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="100" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ucRun" value="Run a Flow" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="260" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ucShare" value="Share a Flow" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="420" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Associations: primary actor to use cases -->
+        <mxCell id="e1" style="html=1;endArrow=none;" edge="1" parent="1" source="actorFlowBuilder" target="ucBuild">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="html=1;endArrow=none;" edge="1" parent="1" source="actorFlowBuilder" target="ucRun">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="html=1;endArrow=none;" edge="1" parent="1" source="actorFlowBuilder" target="ucShare">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Supporting actor association -->
+        <mxCell id="e4" style="html=1;endArrow=none;" edge="1" parent="1" source="ucRun" target="actorLLM">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Offstage actor association (dashed: interest, not direct interaction) -->
+        <mxCell id="e5" value="reviews audit trail" style="html=1;endArrow=none;dashed=1;" edge="1" parent="1" source="ucShare" target="actorAdmin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
